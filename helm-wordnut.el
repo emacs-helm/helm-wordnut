@@ -11,7 +11,7 @@
 ;; This package is merely a combination of two packages already available:
 ;;
 ;; - https://github.com/raghavgautam/helm-wordnet
-;; - https://github.com/gromnitsky/wordnut/blob/master/wordnut.el
+;; - https://github.com/gromnitsky/wordnut
 
 ;;; Code:
 
