@@ -1,4 +1,4 @@
-# helm-wordnet
+# helm-wordnut
 
 This package is merely a combination of two packages already available:
 

@@ -1,9 +1,9 @@
-;;; helm-wordnet.el --- Helm interface for WordNet -*- lexical-binding: t; -*-
+;;; helm-wordnut.el --- Helm interface for WordNet -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020  Manuel Uberti <manuel.uberti@inventati.org>
 
 ;; Author: Manuel Uberti <manuel.uberti@inventati.org>
-;; URL: https://github.com/manuel-uberti/helm-wordnet
+;; URL: https://github.com/manuel-uberti/helm-wordnut
 ;; Version: 0.1
 
 ;;; Commentary:
@@ -18,11 +18,11 @@
 (require 'helm)
 (require 'dash)
 
-(defconst helm-wordnet-wordnet-location
+(defconst helm-wordnut-wordnet-location
   (car (file-expand-wildcards "/usr/share/wordnet*"))
   "Location of WordNet index files.")
 
-(defconst helm-wordnet-cmd-options
+(defconst helm-wordnut-cmd-options
   '("-over"
     "-synsn" "-synsv" "-synsa" "-synsr"
     "-simsv"
@@ -52,7 +52,7 @@
     "-attrn" "-attra")
   "Optional arguments for `wn'.")
 
-(defconst helm-wordnet-section-headings
+(defconst helm-wordnut-section-headings
   '("Antonyms" "Synonyms" "Hyponyms" "Troponyms"
     "Meronyms" "Holonyms" "Pertainyms"
     "Member" "Substance" "Part"
@@ -60,10 +60,10 @@
     "Coordinate" "Grep" "Similarity"
     "Entailment" "'Cause To'" "Sample" "Overview of"))
 
-(defun helm-wordnet--get-wordlist ()
+(defun helm-wordnut--get-wordlist ()
   "Fetch WordNet suggestions and return them as a list."
   (let* ((all-indexes (directory-files
-                       helm-wordnet-wordnet-location t "index\\..*" ))
+                       helm-wordnut-wordnet-location t "index\\..*" ))
          (word-indexes (cl-remove-if
                         (lambda (x) (string-match-p "index\\.sense$" x))
                         all-indexes)))
@@ -77,31 +77,31 @@
          (split-string (buffer-string) "\n" t)))
      word-indexes)))
 
-(defvar helm-wordnet-all-words nil
+(defvar helm-wordnut-all-words nil
   "List of all the words available via WordNet.")
 
-(defun helm-wordnet--get-candidates ()
+(defun helm-wordnut--get-candidates ()
   "Fetch WordNet suggestions and return them as a list."
-  (unless (bound-and-true-p helm-wordnet-all-words)
-    (setq helm-wordnet-all-words (helm-wordnet--get-wordlist)))
-  helm-wordnet-all-words)
+  (unless (bound-and-true-p helm-wordnut-all-words)
+    (setq helm-wordnut-all-words (helm-wordnut--get-wordlist)))
+  helm-wordnut-all-words)
 
-(defconst helm-wordnet-fl-link-cat-re "->\\((.+?)\\)?")
-(defconst helm-wordnet-fl-link-word-sense-re "\\([^,;)>]+#[0-9]+\\)")
-(defconst helm-wordnet-fl-link-re (concat helm-wordnet-fl-link-cat-re " "
-                                          helm-wordnet-fl-link-word-sense-re))
-(defconst helm-wordnet-font-lock-keywords
+(defconst helm-wordnut-fl-link-cat-re "->\\((.+?)\\)?")
+(defconst helm-wordnut-fl-link-word-sense-re "\\([^,;)>]+#[0-9]+\\)")
+(defconst helm-wordnut-fl-link-re (concat helm-wordnut-fl-link-cat-re " "
+                                          helm-wordnut-fl-link-word-sense-re))
+(defconst helm-wordnut-font-lock-keywords
   `(("^\\* .+$" . 'outline-1)
     ("^\\*\\* .+$" . 'outline-2)
-    (,helm-wordnet-fl-link-cat-re ;; anchor
-     ,(concat " " helm-wordnet-fl-link-word-sense-re) nil nil (1 'link))))
+    (,helm-wordnut-fl-link-cat-re ;; anchor
+     ,(concat " " helm-wordnut-fl-link-word-sense-re) nil nil (1 'link))))
 
-(define-derived-mode helm-wordnet-mode special-mode "Helm-WordNet"
+(define-derived-mode helm-wordnut-mode special-mode "Helm-Wordnut"
   "Major mode interface to WordNet lexical database."
   (visual-line-mode +1)
-  (setq font-lock-defaults '(helm-wordnet-font-lock-keywords)))
+  (setq font-lock-defaults '(helm-wordnut-font-lock-keywords)))
 
-(defun helm-wordnet--format-buffer ()
+(defun helm-wordnut--format-buffer ()
   "Format the entry buffer."
   (let ((inhibit-read-only t)
         (case-fold-search nil))
@@ -112,7 +112,7 @@
     ;; Make headings
     (delete-matching-lines "^ +$" (point-min) (point-max))
     (while (re-search-forward
-            (concat "^" (regexp-opt helm-wordnet-section-headings t)) nil t)
+            (concat "^" (regexp-opt helm-wordnut-section-headings t)) nil t)
       (replace-match "* \\1"))
 
     ;; Remove empty entries
@@ -134,37 +134,37 @@
 
     (goto-char (point-min))))
 
-(defun helm-wordnet--persistent-action (word)
+(defun helm-wordnut--persistent-action (word)
   "Display the meaning of WORD."
   (let ((buf (get-buffer-create "*WordNet*"))
         (options (apply #'concat
-                        (-interpose " " helm-wordnet-cmd-options))))
+                        (-interpose " " helm-wordnut-cmd-options))))
     (with-current-buffer buf
       (let ((inhibit-read-only t))
         (erase-buffer)
         (insert (shell-command-to-string (format "wn %s %s" word options))))
-      (helm-wordnet--format-buffer)
+      (helm-wordnut--format-buffer)
       (set-buffer-modified-p nil)
-      (unless (eq major-mode 'helm-wordnet-mode) (helm-wordnet-mode))
+      (unless (eq major-mode 'helm-wordnut-mode) (helm-wordnut-mode))
       (display-buffer buf)
       (other-window 1))))
 
-(defvar helm-wordnet-source
+(defvar helm-wordnut-source
   (helm-build-sync-source "WordNet"
-    :candidates #'helm-wordnet--get-candidates
-    :action '(("Dictionary" . helm-wordnet--persistent-action))
-    :persistent-action #'helm-wordnet--persistent-action
+    :candidates #'helm-wordnut--get-candidates
+    :action '(("Dictionary" . helm-wordnut--persistent-action))
+    :persistent-action #'helm-wordnut--persistent-action
     :pattern-transformer #'downcase
     :requires-pattern 1))
 
-(defun helm-wordnet ()
+(defun helm-wordnut ()
   "Lookup WordNet definitions with Helm."
   (interactive)
-  (helm :sources 'helm-wordnet-source
+  (helm :sources 'helm-wordnut-source
         :buffer "*helm wordnet*"
         :default (thing-at-point 'word)))
 
 
-(provide 'helm-wordnet)
+(provide 'helm-wordnut)
 
-;;; helm-wordnet.el ends here
+;;; helm-wordnut.el ends here
