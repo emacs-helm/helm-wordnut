@@ -157,6 +157,7 @@
     :pattern-transformer #'downcase
     :requires-pattern 1))
 
+;;;###autoload
 (defun helm-wordnut ()
   "Lookup WordNet definitions with Helm."
   (interactive)
