@@ -6,8 +6,7 @@ This package is merely a combination of two packages already available:
 - [wordnut](https://github.com/gromnitsky/wordnut)
 
 I only took what I deemed useful from both packages and adapted it to my needs,
-which means I am using it on Linux and with an Emacs version built from the
-`master` branch.
+which means I am using it on Linux and with an Emacs version built from `master`.
 
 ## Getting started
 
