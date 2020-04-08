@@ -5,13 +5,16 @@ This package is merely a combination of two packages already available:
 - [helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
 - [wordnut](https://github.com/gromnitsky/wordnut)
 
-I only took what I deemed useful from both packages and adapted it to my needs.
+I only took what I deemed useful from both packages and adapted it to my needs,
+which means I am using it on Linux and with an Emacs version built from the
+`master` branch.
 
 ## Getting started
 
 First, install WordNet following the instructions [here](https://wordnet.princeton.edu/download).
 
-`helm-wordnut` is not listed on MELPA, but you can use [`straight.el`](https://github.com/raxod502/straight.el) to install it:
+Since I am not providing support for it, `helm-wordnut` is not listed on MELPA. If
+you want to try it, you can use [`straight.el`](https://github.com/raxod502/straight.el) to install it:
 
 ```elisp
 (straight-use-package
