@@ -29,5 +29,5 @@ Once available in your Emacs, you can use <kbd>M-x helm-wordnut</kbd>.
 Emacs community. So it’s only fair to say “thank you!” to:
 
 - [Thierry Volpiatto](https://github.com/thierryvolpiatto), for [Helm](https://github.com/emacs-helm)
-- [Raghav Kumar Gautam](https://github.com/raghavgautam/helm-wordnet), for [helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
-- [Alexander Gromnitsky](https://github.com/gromnitsky/wordnut), for [wordnut](https://github.com/gromnitsky/wordnut)
+- [Raghav Kumar Gautam](https://github.com/raghavgautam), for [helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
+- [Alexander Gromnitsky](https://github.com/gromnitsky), for [wordnut](https://github.com/gromnitsky/wordnut)
