@@ -15,8 +15,8 @@
 
 ;;; Code:
 
-(require 'helm)
 (require 'dash)
+(require 'helm)
 
 (defconst helm-wordnut-wordnet-location
   (car (file-expand-wildcards "/usr/share/wordnet*"))
@@ -81,7 +81,7 @@
   "List of all the words available via WordNet.")
 
 (defun helm-wordnut--get-candidates ()
-  "Fetch WordNet suggestions and return them as a list."
+  "Initialize `helm-wordnut-all-words' and return it."
   (unless (bound-and-true-p helm-wordnut-all-words)
     (setq helm-wordnut-all-words (helm-wordnut--get-wordlist)))
   helm-wordnut-all-words)
