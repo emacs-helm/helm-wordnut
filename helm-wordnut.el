@@ -17,6 +17,7 @@
 
 (require 'dash)
 (require 'helm)
+(require 'outline)
 
 (defgroup helm-wordnut nil
   "Helm interface for WordNet."
