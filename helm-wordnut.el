@@ -18,9 +18,20 @@
 (require 'dash)
 (require 'helm)
 
-(defconst helm-wordnut-wordnet-location
+(defgroup helm-wordnut nil
+  "Helm interface for WordNet."
+  :group 'convenience)
+
+(defcustom helm-wordnut-wordnet-location
   (car (file-expand-wildcards "/usr/share/wordnet*"))
-  "Location of WordNet index files.")
+  "Location of WordNet index files."
+  :type 'string
+  :group 'helm-wordnut)
+
+(defcustom helm-wordnut-prog "wn"
+  "Name of the WordNet program."
+  :type 'string
+  :group 'helm-wordnut)
 
 (defconst helm-wordnut-cmd-options
   '("-over"
@@ -50,7 +61,7 @@
     "-causv"
     "-perta" "-pertr"
     "-attrn" "-attra")
-  "Optional arguments for `wn'.")
+  "Optional arguments for WordNet command.")
 
 (defconst helm-wordnut-section-headings
   '("Antonyms" "Synonyms" "Hyponyms" "Troponyms"
@@ -142,7 +153,8 @@
     (with-current-buffer buf
       (let ((inhibit-read-only t))
         (erase-buffer)
-        (insert (shell-command-to-string (format "wn %s %s" word options))))
+        (insert (shell-command-to-string
+                 (format "%s %s %s" helm-wordnut-prog word options))))
       (helm-wordnut--format-buffer)
       (set-buffer-modified-p nil)
       (unless (eq major-mode 'helm-wordnut-mode) (helm-wordnut-mode))
