@@ -20,7 +20,8 @@ you want to try it, you can use [`straight.el`](https://github.com/raxod502/stra
   '(helm-wordnut :host github :repo "manuel-uberti/helm-wordnut"))
 ```
 
-Once available in your Emacs, you can use <kbd>M-x helm-wordnut</kbd>.
+Before using <kbd>M-x helm-wordnut</kbd>, ensure `helm-wordnut-wordnet-location` and
+`helm-wordnut-prog` are set as you expect.
 
 ## Acknowledgements
 
