@@ -21,7 +21,7 @@ you want to try it, you can use [`straight.el`](https://github.com/raxod502/stra
 ```
 
 Before using <kbd>M-x helm-wordnut</kbd>, ensure `helm-wordnut-wordnet-location` and
-`helm-wordnut-prog` are set as you expect.
+`helm-wordnut-prog` are set according to your WordNet installation.
 
 ## Acknowledgements
 
