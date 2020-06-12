@@ -8,10 +8,12 @@
 
 ;;; Commentary:
 
-;; This package is merely a combination of two packages already available:
+;; This package is a combination of two packages already available:
 ;;
 ;; - https://github.com/raghavgautam/helm-wordnet
 ;; - https://github.com/gromnitsky/wordnut
+;;
+;; See the README for more information.
 
 ;;; Code:
 
