@@ -175,7 +175,7 @@
   "Lookup WordNet definitions with Helm."
   (interactive)
   (helm :sources 'helm-wordnut-source
-        :buffer "*helm wordnet*"
+        :buffer "*helm wordnut*"
         :default (thing-at-point 'word)))
 
 
