@@ -5,8 +5,9 @@ This package is merely a combination of two packages already available:
 - [helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
 - [wordnut](https://github.com/gromnitsky/wordnut)
 
-I only took what I deemed useful from both packages and adapted it to my needs,
-which means I am using it on Linux and with an Emacs version built from `master`.
+Both packages seem hardly maintained these days, so I took what I deemed useful
+and created one package that combines the searchability of `helm-wordnet` with the
+nice-looking output of `wordnut`.
 
 ## Getting started
 
