@@ -17,7 +17,6 @@
 
 ;;; Code:
 
-(require 'dash)
 (require 'helm)
 (require 'outline)
 
@@ -151,8 +150,7 @@
 (defun helm-wordnut--persistent-action (word)
   "Display the meaning of WORD."
   (let ((buf (get-buffer-create "*WordNet*"))
-        (options (apply #'concat
-                        (-interpose " " helm-wordnut-cmd-options))))
+        (options (mapconcat 'identity helm-wordnut-cmd-options " ")))
     (with-current-buffer buf
       (let ((inhibit-read-only t))
         (erase-buffer)
