@@ -11,7 +11,12 @@ nice-looking output of `wordnut`.
 
 ## Getting started
 
-First, install WordNet following the instructions [here](https://wordnet.princeton.edu/download).
+First, install WordNet following the instructions [here](https://wordnet.princeton.edu/download). For example, on
+Ubuntu/Debian systems, it is simply a matter of:
+
+``` bash
+$ sudo apt-get install wordnet
+```
 
 `helm-wordnut` is not listed on ELPA nor MELPA. If you want to try it, you can use
 [`straight.el`](https://github.com/raxod502/straight.el) to install it:
