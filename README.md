@@ -12,8 +12,8 @@ which means I am using it on Linux and with an Emacs version built from `master
 
 First, install WordNet following the instructions [here](https://wordnet.princeton.edu/download).
 
-Since I am not providing support for it, `helm-wordnut` is not listed on MELPA. If
-you want to try it, you can use [`straight.el`](https://github.com/raxod502/straight.el) to install it:
+`helm-wordnut` is not listed on ELPA nor MELPA. If you want to try it, you can use
+[`straight.el`](https://github.com/raxod502/straight.el) to install it:
 
 ```elisp
 (straight-use-package
