@@ -18,7 +18,7 @@
 ;;; Code:
 
 (require 'helm)
-(require 'outline)
+(require 'org)
 
 (defgroup helm-wordnut nil
   "Helm interface for WordNet."
@@ -104,15 +104,17 @@
 (defconst helm-wordnut-fl-link-re (concat helm-wordnut-fl-link-cat-re " "
                                           helm-wordnut-fl-link-word-sense-re))
 (defconst helm-wordnut-font-lock-keywords
-  `(("^\\* .+$" . 'outline-1)
-    ("^\\*\\* .+$" . 'outline-2)
+  `(("^\\* .+$" . 'org-level-1)
+    ("^\\*\\* .+$" . 'org-level-2)
     (,helm-wordnut-fl-link-cat-re ;; anchor
      ,(concat " " helm-wordnut-fl-link-word-sense-re) nil nil (1 'link))))
 
 (define-derived-mode helm-wordnut-mode special-mode "Helm-Wordnut"
   "Major mode interface to WordNet lexical database."
-  (visual-line-mode +1)
-  (setq font-lock-defaults '(helm-wordnut-font-lock-keywords)))
+  (setq font-lock-defaults '(helm-wordnut-font-lock-keywords))
+  (let ((org-startup-folded nil))
+    (org-mode))
+  (visual-line-mode +1))
 
 (defun helm-wordnut--format-buffer ()
   "Format the entry buffer."
