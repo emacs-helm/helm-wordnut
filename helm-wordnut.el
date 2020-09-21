@@ -5,6 +5,7 @@
 ;; Author: Manuel Uberti <manuel.uberti@inventati.org>
 ;; URL: https://github.com/manuel-uberti/helm-wordnut
 ;; Version: 0.1
+;; Package-Requires: ((emacs "24.3"))
 
 ;;; Commentary:
 
