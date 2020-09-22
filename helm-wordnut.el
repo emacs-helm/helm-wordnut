@@ -3,7 +3,7 @@
 ;; Copyright (C) 2020  Manuel Uberti <manuel.uberti@inventati.org>
 
 ;; Author: Manuel Uberti <manuel.uberti@inventati.org>
-;; URL: https://github.com/manuel-uberti/helm-wordnut
+;; URL: https://github.com/emacs-helm/helm-wordnut
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "24.3"))
 

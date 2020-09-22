@@ -23,7 +23,7 @@ $ sudo apt-get install wordnet
 
 ```elisp
 (straight-use-package
-  '(helm-wordnut :host github :repo "manuel-uberti/helm-wordnut"))
+  '(helm-wordnut :host github :repo "emacs-helm/helm-wordnut"))
 ```
 
 Before using <kbd>M-x helm-wordnut</kbd>, ensure `helm-wordnut-wordnet-location` and
