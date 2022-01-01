@@ -1,6 +1,6 @@
 ;;; helm-wordnut.el --- Helm interface for WordNet -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2020  Manuel Uberti <manuel.uberti@inventati.org>
+;; Copyright (C) 2020-2022  Manuel Uberti <manuel.uberti@inventati.org>
 
 ;; Author: Manuel Uberti <manuel.uberti@inventati.org>
 ;; URL: https://github.com/emacs-helm/helm-wordnut
